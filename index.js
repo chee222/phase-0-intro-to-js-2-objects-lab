@@ -1,4 +1,3 @@
-
 function updateEmployeeWithKeyAndValue(employee, key, value) {
   const updatedEmployee = { ...employee };
   updatedEmployee[key] = value;
@@ -7,29 +6,21 @@ function updateEmployeeWithKeyAndValue(employee, key, value) {
 
 const employee = {
   name: 'Sam',
-  streetAddress: "11 Broadway",
-  
+  streetAddress: '11 Broadway'
 };
+
+// Modifying the 'streetAddress' property of the employee
+employee.streetAddress = '12 Broadway';
 
 const updatedEmployee = updateEmployeeWithKeyAndValue(employee, "streetAddress", "11 Broadway");
 
 console.log("Original Employee:", employee);
-console.log("Updated Employee:", updatedEmployeeup);
+console.log("Updated Employee:", updatedEmployee);
 
 function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
   employee[key] = value;
   return employee;
 }
-
-expect(employee, 'streetAddress', '12 Broadway').to.eql({
-  name: 'Sam',
-  streetAddress: '12 Broadway',
-});
-
-expect (employee).to.eql({
-  name: 'Sam',
-  streetAddress: '12 Broadway',
-});
 
 function deleteFromEmployeeByKey(employee, key) {
   let newEmployee = { ...employee };
@@ -38,17 +29,14 @@ function deleteFromEmployeeByKey(employee, key) {
 }
 
 function destructivelyDeleteFromEmployeeByKey(employee, key) {
-  let newEmployee = { ...employee };
-   delete newEmployee[key];
-  return newEmployee;
+  delete employee[key];
+  return employee;
 }
 
-let newEmployee = destructivelyDeleteFromEmployeeByKey(employee, 'undefined');
+console.log('Original Employee:', employee);
 
-employee.name = 'Sam';
+destructivelyDeleteFromEmployeeByKey(employee, 'streetAddress');
 
-console.log(employee);
+console.log('Updated Employee:', employee);
 
-
-
-
+updateEmployeeWithKeyAndValue(employee, 'streetAddress', '12 Broadway');
